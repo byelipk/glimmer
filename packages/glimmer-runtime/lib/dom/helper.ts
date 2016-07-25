@@ -42,9 +42,13 @@ export function moveNodesBefore(source, target, nextSibling) {
   return [first, last];
 }
 
-class DOMHelper {
-  private document: HTMLDocument;
-  private namespace: string;
+export interface IDOMHelper {
+  createTextNode(text: string): Text;
+}
+
+class DOMHelper implements IDOMHelper {
+  protected document: HTMLDocument;
+  protected namespace: string;
   private uselessElement: HTMLElement;
   private uselessAnchor: HTMLAnchorElement;
 
